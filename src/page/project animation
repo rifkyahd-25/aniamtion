@@ -1,0 +1,152 @@
+import React from "react";
+import { motion } from "framer-motion";
+import "font-awesome/css/font-awesome.min.css";
+import edu from "../assets/8703118_3974104-removebg-preview.png";
+import logo1 from "../assets/logos/5613852.png";
+import logo2 from "../assets/logos/ECCouncilLogo.jpg";
+import logo3 from "../assets/logos/freeCodeCamp.png";
+import logo4 from "../assets/logos/Logo-OUSL-tnsp-207x300.png";
+import logo5 from "../assets/logos/pngwing.com(2).png";
+import logo6 from "../assets/logos/pngwing.com(3).png";
+
+export const Project = () => {
+  return (
+    <>
+      {/* Education Section */}
+      <motion.section
+        className="text-white flex items-center justify-center min-h-[600px] py-10"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto flex flex-col md:flex-row items-center md:gap-16 px-6 md:px-24 lg:px-32">
+          {/* Image Section */}
+          <motion.div
+            className="w-full md:w-1/2 flex justify-center"
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <img
+              className="max-w-[350px] md:max-w-[450px] lg:max-w-[500px] object-cover rounded-lg shadow-xl"
+              src={edu}
+              alt="Education"
+            />
+          </motion.div>
+
+          {/* Text Section */}
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl">
+              Education
+            </h1>
+            <p className="mt-4 text-lg font-semibold text-gray-300 sm:text-xl">
+              Basic Qualification and Certifications
+            </p>
+            <motion.div
+              className="flex justify-center md:justify-start items-center gap-4 mt-6 flex-wrap"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              {[logo1, logo2, logo3, logo4, logo5, logo6].map((logo, index) => (
+                <motion.img
+                  key={index}
+                  className="w-14 h-14 object-contain bg-gray-200 p-2 rounded-full shadow-md"
+                  src={logo}
+                  alt={`Logo ${index + 1}`}
+                  whileHover={{ scale: 1.1 }}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Degree Progress Section */}
+      <motion.section
+        className="text-white py-16 w-screen"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex justify-center items-center">
+          <img className="h-40" src={logo4} alt="Degree Logo" />
+        </div>
+        <h1 className="p-5 text-5xl font-bold text-center">Degree Progress</h1>
+
+        <motion.div
+          className="container mx-auto flex justify-center"
+          initial={{ scale: 0.8 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="w-full md:w-3/4 lg:w-2/3 bg-white text-gray-900 rounded-lg shadow-lg p-8">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
+              The Open University of Sri Lanka (OUSL)
+            </h2>
+            <h3 className="text-xl font-semibold text-gray-600 mb-6">
+              Bachelor of Software Engineering (BSE)
+              <span className="text-sm text-gray-400">| 2024 - Present</span>
+            </h3>
+            <div className="space-y-4">
+              <p className="text-lg text-gray-700">⚡ Studying core subjects like Software Engineering, Data Structures, DBMS, and AI.</p>
+              <p className="text-lg text-gray-700">⚡ Gaining experience in Full Stack Development and Cloud Computing.</p>
+              <p className="text-lg text-gray-700">⚡ Working on projects like an event management app with MERN stack.</p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.section>
+
+      {/* Certifications Section */}
+      <motion.section
+        className="text-white px-6 py-16 w-screen"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto text-center">
+          <h4 className="text-3xl font-bold text-white mb-8">Certifications</h4>
+
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { title: "Introduction to SQL", file: "path_to_sql_certificate.pdf" },
+              { title: "Responsive Web Design", file: "path_to_responsive_web_design_certificate.pdf" },
+              { title: "Introduction to Python", file: "path_to_python_certificate.pdf" },
+              { title: "Foundations of Cybersecurity", file: "path_to_cybersecurity_certificate.pdf" },
+              { title: "Introduction to Java", file: "path_to_java_certificate.pdf" }
+            ].map((cert, index) => (
+              <motion.div
+                key={index}
+                className="bg-white text-gray-900 rounded-lg shadow-lg hover:shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-6 text-center">
+                  <h5 className="text-lg font-semibold text-gray-900 mb-4">{cert.title}</h5>
+                  <a
+                    href={cert.file}
+                    className="inline-block py-2 px-4 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-all duration-300"
+                    download
+                  >
+                    Download Certificate
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+    </>
+  );
+};

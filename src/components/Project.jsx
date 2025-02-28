@@ -2,6 +2,10 @@ import React from 'react'
 
 export const Project = () => {
   return (
-    <div>Project</div>
-  )
+   
+        <div className='text-white text-5xl'>i am danger</div>
+      )
+  
+    
+  
 }

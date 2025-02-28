@@ -5,36 +5,37 @@ import { Home, User, Briefcase, FileText } from "lucide-react";
 
 export function NavBar() {
   const [activeTab, setActiveTab] = useState("Home");
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const tabs = ["Home", "Expirence", "Projects", "Resume"];
+  const icons = [Home, User, Briefcase, FileText];
+  const links = ["/all", "/expirence", "/projects", "/resume"]; // Actual paths
+
   return (
     <div className="fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6">
       <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
-        
-        {['Home', 'About', 'Projects', 'Resume'].map((tab, index) => {
-          const icons = [Home, User, Briefcase, FileText];
+        {tabs.map((tab, index) => {
           const Icon = icons[index];
           const isActive = activeTab === tab;
 
           return (
             <Link
               key={tab}
-              to="#"
+              to={links[index]} // Updated navigation path
               onClick={() => setActiveTab(tab)}
+              aria-label={tab}
               className={`relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors text-foreground/80 hover:text-primary ${isActive ? "bg-muted text-primary" : ""}`}
             >
-              <span className="hidden md:inline">{tab}</span>
-              <span className="md:hidden"><Icon size={18} strokeWidth={2.5} /></span>
+              <span className={isMobile ? "hidden" : "inline"}>{tab}</span>
+              <span className={isMobile ? "inline" : "hidden"}>
+                <Icon size={18} strokeWidth={2.5} />
+              </span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"
